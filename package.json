@@ -5,8 +5,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node --watch server.js",
-    "tw:watch": "npx @tailwindcss/cli -i ./public/css/tailwind.css -o ./public/css/main.css --watch",
-    "tw:build": "tailwindcss -i ./public/css/tailwind.css -o ./public/css/main.css"
+    "build": "npx @tailwindcss/cli -i ./public/css/tailwind.css -o ./public/css/main.css",
+    "tw:watch": "npx @tailwindcss/cli -i ./public/css/tailwind.css -o ./public/css/main.css --watch"
+}
   },
   "keywords": [],
   "author": "",

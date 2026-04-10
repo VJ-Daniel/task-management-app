@@ -1,24 +1,20 @@
 const express = require("express");
-import path from "path";
+const path = require("path");
 require("dotenv").config();
 require("pg");
-
-const app = express();
-const port = 3000;
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-app.set("view engine", "ejs");
-app.set("views", __dirname + "/views");
-
-app.use(express.static(path.join(__dirname, "public")));
-app.use(express.static("public"));
 
 const { connectMongo, User } = require("./data/mongo");
 const { sequelize, connectPostgres, Task } = require("./data/postgres");
 const bcrypt = require("bcrypt");
 const session = require("client-sessions");
+
+const app = express();
+const port = 3000;
+
+app.set("view engine", "ejs");
+app.set("views", __dirname + "/views");
+
+app.use(express.static(path.join(__dirname, "public")));
 
 const startServer = async () => {
   await connectMongo();

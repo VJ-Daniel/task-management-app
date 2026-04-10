@@ -44,12 +44,10 @@ const startServer = async () => {
 
   // ================= AUTH ROUTES =================
 
-  // GET register
   app.get("/register", (req, res) => {
     res.render("register", { error: null });
   });
 
-  // POST register
   app.post("/register", async (req, res) => {
     try {
       const { username, email, password } = req.body;
@@ -82,12 +80,11 @@ const startServer = async () => {
       res.render("register", { error: "Registration error" });
     }
   });
-  // GET login
+
   app.get("/login", (req, res) => {
     res.render("login", { error: null });
   });
 
-  // POST login
   app.post("/login", async (req, res) => {
     try {
       const { username, password } = req.body;
@@ -117,7 +114,6 @@ const startServer = async () => {
     }
   });
 
-  // GET logout
   app.get("/logout", (req, res) => {
     req.session.reset();
     res.redirect("/login");
@@ -125,7 +121,6 @@ const startServer = async () => {
 
   // ================= TASK ROUTES =================
 
-  // GET dashboard
   app.get("/dashboard", ensureLogin, async (req, res) => {
     const tasks = await Task.findAll({
       where: { userId: req.session.user.id },
@@ -145,12 +140,10 @@ const startServer = async () => {
     res.render("tasks", { tasks });
   });
 
-  // GET add form
   app.get("/tasks/add", ensureLogin, (req, res) => {
     res.render("addTask");
   });
 
-  // POST create task
   app.post("/tasks/add", ensureLogin, async (req, res) => {
     try {
       const { title, description, dueDate, status } = req.body;
@@ -170,14 +163,12 @@ const startServer = async () => {
     }
   });
 
-  // GET edit
   app.get("/tasks/edit/:id", ensureLogin, async (req, res) => {
     const task = await Task.findByPk(req.params.id);
 
     res.render("editTask", { task });
   });
 
-  // POST update
   app.post("/tasks/edit/:id", ensureLogin, async (req, res) => {
     try {
       await Task.update(req.body, {
@@ -191,7 +182,6 @@ const startServer = async () => {
     }
   });
 
-  // POST delete
   app.post("/tasks/delete/:id", ensureLogin, async (req, res) => {
     try {
       await Task.destroy({
@@ -205,7 +195,6 @@ const startServer = async () => {
     }
   });
 
-  // POST status update
   app.post("/tasks/status/:id", ensureLogin, async (req, res) => {
     try {
       const task = await Task.findByPk(req.params.id);

@@ -1,0 +1,53 @@
+<%- include("partials/header", { title: "Add Task" }) %>
+
+<div class="flex items-center justify-center min-h-[70vh]">
+
+  <div class="card w-full max-w-md bg-base-100 shadow-xl">
+
+    <div class="card-body">
+
+      <h2 class="text-2xl font-bold text-center">Add Task</h2>
+
+      <form method="POST" action="/tasks/add" class="space-y-4 mt-4">
+
+        <input 
+          type="text" 
+          name="title" 
+          placeholder="Title" 
+          class="input input-bordered w-full"
+          required
+        />
+
+        <input 
+          type="text" 
+          name="description" 
+          placeholder="Description" 
+          class="input input-bordered w-full"
+          required
+        />
+
+        <input 
+          type="date" 
+          name="dueDate" 
+          class="input input-bordered w-full"
+          required
+        />
+
+        <select name="status" class="select select-bordered w-full">
+          <option value="pending">Pending</option>
+          <option value="complete">Complete</option>
+        </select>
+
+        <button class="btn btn-primary w-full mt-2">
+          Create Task
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</div>
+
+<%- include("partials/footer") %>

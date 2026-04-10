@@ -1,0 +1,70 @@
+<%- include("partials/header", { title: "Dashboard" }) %>
+
+<div class="min-h-[80vh] flex flex-col items-center pt-16 px-4 bg-base-200">
+
+  <h1 class="text-4xl font-bold mb-10">
+    Dashboard
+  </h1>
+
+  <div class="w-full max-w-5xl space-y-8">
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      <div class="card bg-base-100 shadow-xl rounded-2xl">
+        <div class="card-body space-y-3">
+          <h2 class="text-2xl font-bold text-primary">Welcome</h2>
+
+          <p class="text-lg">
+            <span class="font-semibold">Username:</span> <%= user.username %>
+          </p>
+
+          <p class="text-lg">
+            <span class="font-semibold">Email:</span> <%= user.email %>
+          </p>
+        </div>
+      </div>
+
+      <!-- TASK COUNT CARD -->
+      <div class="card bg-base-100 shadow-xl rounded-2xl">
+        <div class="card-body space-y-3">
+          <h2 class="text-2xl font-bold text-primary">Your Tasks</h2>
+
+          <p class="text-base text-base-content/70">
+            You currently have:
+          </p>
+
+          <p class="text-3xl font-bold text-primary">
+            <%= tasks.length %> Tasks
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+<div class="card bg-base-100 shadow-xl rounded-2xl">
+  <div class="card-body items-center text-center">
+
+    <h2 class="text-2xl font-bold text-primary mb-4">
+      Actions
+    </h2>
+
+    <div class="flex gap-4 justify-center flex-wrap">
+
+      <a href="/tasks" class="btn btn-primary px-8 text-lg rounded-xl shadow-md">
+        View Tasks
+      </a>
+
+      <a href="/logout" class="btn bg-base-300 hover:bg-base-400 px-8 text-lg rounded-xl border-none">
+        Logout
+      </a>
+
+    </div>
+
+  </div>
+</div>
+
+  </div>
+
+</div>
+
+<%- include("partials/footer") %>

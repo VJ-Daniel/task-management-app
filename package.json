@@ -5,8 +5,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node --watch server.js",
-    "tw:build": "npx @tailwindcss/cli -i ./public/css/tailwind.css -o ./public/css/main.css --watch",
-    "dev": "concurrently \"npm run start\" \"npm run tw:watch\""
+    "tw:build": "npx @tailwindcss/cli -i ./public/css/tailwind.css -o ./public/css/main.css",
+    "tw:watch": "npx @tailwindcss/cli -i ./public/css/tailwind.css -o ./public/css/main.css --watch",
+    "dev": "concurrently \"npm run start\" \"npm run tw:watch\"",
+    "build": "npm run tw:build"
+
   },
   "keywords": [],
   "author": "",

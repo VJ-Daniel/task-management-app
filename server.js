@@ -1,9 +1,14 @@
 const express = require("express");
+import path from "path";
 require("dotenv").config();
 require("pg");
 
 const app = express();
 const port = 3000;
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 app.set("view engine", "ejs");
 app.set("views", __dirname + "/views");
 
